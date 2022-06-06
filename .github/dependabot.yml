@@ -1,0 +1,18 @@
+# See https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    ignore:
+      - dependency-name: '@types/*'
+      - dependency-name: eslint
+      - dependency-name: '@typescript-eslint/*'
+      - dependency-name: husky
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 20
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 20
