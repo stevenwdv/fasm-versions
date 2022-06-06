@@ -3,14 +3,6 @@
 		"fasm1": {
 			"versions": [
 				{
-					"name": "1.73.30",
-					"hashes": {
-						"windows": "abd87216ba40489240c726ae60fafec0fcc714b31c0811d535db7cbe5396e1281ea1d55dd8276016b27125e5ecc5e05381287682ae31b7ae7c5bf771318bd140",
-						"linux": "6364e455cb487a81cabe66ad4f747ae4d2773ff8d4dbc9ef118a6426eefb043e635611cea58b1e727822f905c3140a63b4d06d60f92d363ce7e06c9e6fb9f76b",
-						"unix": "88c63944d159fe05f4640ada7fa35c6cf2e938437f2c1d7b1e6a8d18b855f8a7b61373b34c9da45cd0593329a0441323f479c865cf272366836289cabb5d3da8"
-					}
-				},
-				{
 					"name": "1.73.29",
 					"hashes": {
 						"windows": "a3ae2d7e54ee30deb791e06792c7e7e44e7eedf04c507e4a92f11cae9dfc3c13619dc55f969d8f65b054dc356cb022cc752fb5b1ff832832aebf0ea838779d8e",
