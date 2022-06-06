@@ -78,9 +78,9 @@ function httpsGet(url: URL): Promise<IncomingMessage> {
 			  secureOptions: 0x40000000, /*SSL_OP_NO_RENEGOTIATION*/
 		  } : {}, res => {
 			  if (res.statusCode !== 200)
-				  reject(new Error(`Failed to download ${url.href}: HTTP ${res.statusCode!} ${res.statusMessage!}`));
+				  reject(new Error(`failed to download ${url.href}: HTTP ${res.statusCode!} ${res.statusMessage!}`));
 			  else resolve(res);
-		  }).on('error', err => reject(new Error(`Failed to download ${url.href}`, {cause: err}))),
+		  }).on('error', err => reject(new Error(`failed to download ${url.href}`, {cause: err}))),
 	);
 }
 
