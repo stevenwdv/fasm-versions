@@ -1,0 +1,35 @@
+name: Build, lint, test
+
+on: [ push, pull_request ]
+
+jobs:
+  build-lint:
+    name: Build & lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm ci
+      - name: Build & lint
+        run: npm run lint
+
+  test:
+    name: Test
+    needs: build-lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Test if check-versions adds versions
+        run: |
+          set -o pipefail
+          echo '{"editions":{"fasm1":{"versions":[]},"fasmg":{"versions":[]},"fasmarm":{"versions":[]}}}' >./fasm_versions.json
+          added_versions=$(npm run check-versions-ts | tee /dev/fd/2 | (grep -oP '(?<=\[\[).*(?=\]\])' || echo))
+          [ ! -z "$added_versions" ]
+          [ $(stat --format="%s" fasm_versions.json) -gt 1000 ]

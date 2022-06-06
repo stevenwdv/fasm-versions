@@ -1,0 +1,53 @@
+name: Check versions
+
+on:
+  schedule:
+    - cron: '0 7 * * *'
+
+jobs:
+  check-versions:
+    name: Check for new versions
+    runs-on: ubuntu-latest
+    outputs:
+      added-versions: ${{ steps.check-versions.outputs.added-versions }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Check for new versions
+        id: check-versions
+        run: |
+          set -o pipefail
+          added_versions=$(npm run check-versions-ts | tee /dev/fd/2 | (grep -oP '(?<=\[\[).*(?=\]\])' || echo))
+          echo "::set-output name=added-versions::$added_versions"
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: fasm_versions.json
+          path: fasm_versions.json
+          retention-days: 1
+
+  pull-request:
+    name: Create pull request
+    needs: check-versions
+    if: needs.check-versions.outputs.added-versions != ''
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: fasm_versions.json
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          add-paths: fasm_versions.json
+          commit-message: Add ${{ needs.check-versions.outputs.added-versions }} to fasm_versions.json
+          author: Version checker bot <41898282+github-actions[bot]@users.noreply.github.com>
+          branch: fasm-version-updates
+          delete-branch: true
+          title: Update fasm_versions.json
+          body: Add ${{ needs.check-versions.outputs.added-versions }} to fasm_versions.json
+          labels: fasm-versions

@@ -1,0 +1,23 @@
+{
+	"name": "fasm-versions",
+	"version": "1.0.0",
+	"author": "stevenwdv",
+	"license": "MIT",
+	"main": "./src/version-data.ts",
+	"scripts": {
+		"check-versions-ts": "yes | npx ts-node --transpileOnly ./src/check-new-versions.ts",
+		"lint": "tsc --noEmit && eslint .",
+		"prepare": "husky install ./.hooks"
+	},
+	"sideEffects": [
+		"./src/check-versions.ts"
+	],
+	"devDependencies": {
+		"@types/node": "^17.0.40",
+		"@typescript-eslint/eslint-plugin": "^5.27.0",
+		"@typescript-eslint/parser": "^5.27.0",
+		"eslint": "^8.17.0",
+		"husky": "^8.0.1",
+		"ts-node": "^10.8.1"
+	}
+}
