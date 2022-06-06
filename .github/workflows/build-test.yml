@@ -23,6 +23,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - run: npm ci
-      - name: Test if check-versions runs normally
-        run: npm run check-versions-ts
+      - name: Test if check-versions adds versions
+        run: |
+          echo '{"editions":{"fasm1":{"versions":[]},"fasmg":{"versions":[]},"fasmarm":{"versions":[]}}}' >./fasm_versions.json
+          npm run check-versions-ts
+          [ $(stat --format="%s" fasm_versions.json) -gt 160 ]
