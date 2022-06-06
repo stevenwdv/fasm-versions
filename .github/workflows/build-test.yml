@@ -23,6 +23,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - name: Test if check-versions adds versions
         run: |
           set -o pipefail

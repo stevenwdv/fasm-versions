@@ -1,13 +1,13 @@
 #!/usr/bin/env ts-node
 
-import crypto from 'crypto';
-import fs from 'fs';
-import {IncomingMessage} from 'http';
-import https from 'https';
-import path from 'path';
-import process from 'process';
-import consumers from 'stream/consumers';
-import {pipeline} from 'stream/promises';
+import crypto from 'node:crypto';
+import fs from 'node:fs';
+import {IncomingMessage} from 'node:http';
+import https from 'node:https';
+import path from 'node:path';
+import process from 'node:process';
+import consumers from 'node:stream/consumers';
+import {pipeline} from 'node:stream/promises';
 
 import {FasmData, FasmEditionStr, getUrls, PlatformStr} from './version-data';
 import dataRaw from '../fasm_versions.json';
