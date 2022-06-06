@@ -4,6 +4,7 @@ import crypto from 'crypto';
 import fs from 'fs';
 import {IncomingMessage} from 'http';
 import https from 'https';
+import path from 'path';
 import process from 'process';
 import consumers from 'stream/consumers';
 import {pipeline} from 'stream/promises';
@@ -41,7 +42,7 @@ async function main() {
 		  }))).flat();
 
 	if (newVersionsTotal.length) {
-		fs.writeFileSync('../fasm_versions.json', JSON.stringify(data, undefined, '\t') + '\n');
+		fs.writeFileSync(path.resolve(__dirname, '../fasm_versions.json'), JSON.stringify(data, undefined, '\t') + '\n');
 		console.info(`added ${newVersionsTotal.length} new version(s) to fasm_versions.json`);
 		console.log(`added [[${newVersionsTotal.map(({edition, version}) => `${edition} ${version}`).join(', ')}]]`);
 	} else console.info('no new versions found');
@@ -72,10 +73,10 @@ async function getHash(url: URL): Promise<string> {
 function httpsGet(url: URL): Promise<IncomingMessage> {
 	return new Promise((resolve, reject) =>
 		  // eslint-disable-next-line no-promise-executor-return
-		  void https.get(url, {
+		  void https.get(url, url.href !== pageUrl.href ? {
 			  // Prevent 'unsafe legacy renegotiation disabled' error because of unpatched flatassembler.net server
 			  secureOptions: 0x40000000, /*SSL_OP_NO_RENEGOTIATION*/
-		  }, res => {
+		  } : {}, res => {
 			  if (res.statusCode !== 200)
 				  reject(new Error(`Failed to download ${url.href}: HTTP ${res.statusCode!} ${res.statusMessage!}`));
 			  else resolve(res);

@@ -25,6 +25,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Test if check-versions adds versions
         run: |
-          echo '{"editions":{"fasm1":{"versions":[]},"fasmg":{"versions":[]},"fasmarm":{"versions":[]}}}' >./fasm_versions.json
-          npm run check-versions-ts
-          [ $(stat --format="%s" fasm_versions.json) -gt 160 ]
+        set -o pipefail
+        echo '{"editions":{"fasm1":{"versions":[]},"fasmg":{"versions":[]},"fasmarm":{"versions":[]}}}' >./fasm_versions.json
+        added_versions=$(npm run check-versions-ts | tee /dev/fd/2 | (grep -oP '(?<=\[\[).*(?=\]\])' || echo))
+        [ ! -z "$added_versions" ]
+        [ $(stat --format="%s" fasm_versions.json) -gt 1000 ]
