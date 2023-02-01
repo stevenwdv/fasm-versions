@@ -1,4 +1,4 @@
-# flatassembler version list
+# flat assembler version list
 
 fasm version list used in [stevenwdv/setup-fasm](https://github.com/stevenwdv/setup-fasm), with workflow checking for new versions. [`fasm_versions.json`](https://github.com/stevenwdv/fasm-versions/blob/v1/fasm_versions.json) contains the list of versions.
 
