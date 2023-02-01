@@ -1,7 +1,7 @@
 #!/usr/bin/env ts-node
 
 import crypto from 'node:crypto';
-import fs from 'node:fs';
+import fsp from 'node:fs/promises';
 import {IncomingMessage} from 'node:http';
 import https from 'node:https';
 import path from 'node:path';
@@ -42,7 +42,7 @@ async function main() {
 		  }))).flat();
 
 	if (newVersionsTotal.length) {
-		fs.writeFileSync(path.resolve(__dirname, '../fasm_versions.json'), JSON.stringify(data, undefined, '\t') + '\n');
+		await fsp.writeFile(path.resolve(__dirname, '../fasm_versions.json'), JSON.stringify(data, undefined, '\t') + '\n');
 		console.info(`added ${newVersionsTotal.length} new version(s) to fasm_versions.json`);
 		console.log(`added [[${newVersionsTotal.map(({edition, version}) => `${edition} ${version}`).join(', ')}]]`);
 	} else console.info('no new versions found');
