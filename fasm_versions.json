@@ -1114,6 +1114,14 @@
 		"fasmg": {
 			"versions": [
 				{
+					"name": "jy3q",
+					"hashes": {
+						"windows": "bc4de08b1e6f45053aa76091b49bdf1f6e357f498459d58d4d8ccfd57aeb9479e78f1082cb2f2b4c6ed5d8c36bb2e093b427b64c6ab96a01945fe1214e9c0af8",
+						"linux": "bc4de08b1e6f45053aa76091b49bdf1f6e357f498459d58d4d8ccfd57aeb9479e78f1082cb2f2b4c6ed5d8c36bb2e093b427b64c6ab96a01945fe1214e9c0af8",
+						"unix": "bc4de08b1e6f45053aa76091b49bdf1f6e357f498459d58d4d8ccfd57aeb9479e78f1082cb2f2b4c6ed5d8c36bb2e093b427b64c6ab96a01945fe1214e9c0af8"
+					}
+				},
+				{
 					"name": "jxx7",
 					"hashes": {
 						"windows": "e6a7f316e351ebc047df8494cb45b59abcb4ca745aac038b925c7f455b03f868ceb12072d9fd8d688cb9f121a1337813e2da69118b0d43f5e30311e776ad2016",
