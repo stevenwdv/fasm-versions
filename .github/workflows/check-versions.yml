@@ -26,11 +26,11 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: fasm_versions.json
-          path: fasm_versions.json
+          path: ./fasm_versions.json
           retention-days: 1
 
   pull-request:
-    name: Create pull request
+    name: Test & create pull request
     needs: check-versions
     if: needs.check-versions.outputs.added-versions != ''
     runs-on: ubuntu-latest
@@ -40,6 +40,20 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: fasm_versions.json
+
+      - name: Test install latest fasm 1 version
+        if: contains(needs.check-versions.outputs.added-versions, 'fasm1')
+        uses: stevenwdv/setup-fasm@v1
+        with:
+          edition: fasm1
+          custom-version-list: ./fasm_versions.json
+      - name: Test install latest fasm g version
+        if: contains(needs.check-versions.outputs.added-versions, 'fasmg')
+        uses: stevenwdv/setup-fasm@v1
+        with:
+          edition: fasmg
+          custom-version-list: ./fasm_versions.json
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
