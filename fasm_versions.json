@@ -1114,6 +1114,14 @@
 		"fasmg": {
 			"versions": [
 				{
+					"name": "k328",
+					"hashes": {
+						"windows": "d2d62538624cee0a7ddef0780d476aad850c46dee6d695e22424624eba2bf756aa4ff7fd172a98b0f585ded2e877a23d2c9a7b5ded198385eefeb1aa6c1ff4ba",
+						"linux": "d2d62538624cee0a7ddef0780d476aad850c46dee6d695e22424624eba2bf756aa4ff7fd172a98b0f585ded2e877a23d2c9a7b5ded198385eefeb1aa6c1ff4ba",
+						"unix": "d2d62538624cee0a7ddef0780d476aad850c46dee6d695e22424624eba2bf756aa4ff7fd172a98b0f585ded2e877a23d2c9a7b5ded198385eefeb1aa6c1ff4ba"
+					}
+				},
+				{
 					"name": "k30n",
 					"hashes": {
 						"windows": "4b0365b23707ffc751c49ab4226d62c03a3ab1e0c59fc86e67e24b5bd9290191d7c34dc23ab7f21063b28b016e7773e5aa9ef5ede3185d629440e4e2728e166e",
