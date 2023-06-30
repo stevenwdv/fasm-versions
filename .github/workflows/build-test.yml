@@ -33,3 +33,4 @@ jobs:
           added_versions=$(npm run check-versions-ts | tee /dev/fd/2 | (grep -oP '(?<=\[\[).*(?=\]\])' || echo))
           [ ! -z "$added_versions" ]
           [ $(stat --format="%s" fasm_versions.json) -gt 1000 ]
+        shell: bash
