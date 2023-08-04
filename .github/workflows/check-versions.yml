@@ -46,12 +46,14 @@ jobs:
         uses: stevenwdv/setup-fasm@v1
         with:
           edition: fasm1
+          fallback-to-previous-compatible: false
           custom-version-list: ./fasm_versions.json
       - name: Test install latest fasm g version
         if: contains(needs.check-versions.outputs.added-versions, 'fasmg')
         uses: stevenwdv/setup-fasm@v1
         with:
           edition: fasmg
+          fallback-to-previous-compatible: false
           custom-version-list: ./fasm_versions.json
 
       - name: Create Pull Request
