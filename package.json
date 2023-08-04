@@ -11,8 +11,12 @@
 		"prepare": "husky install ./.hooks"
 	},
 	"sideEffects": [
-		"./src/check-versions.ts"
+		"./src/check-versions.ts",
+		"./src/check-hashes.ts"
 	],
+	"engines": {
+		"node": ">=16"
+	},
 	"devDependencies": {
 		"@types/node": "^16.18.37",
 		"@typescript-eslint/eslint-plugin": "^5.60.1",

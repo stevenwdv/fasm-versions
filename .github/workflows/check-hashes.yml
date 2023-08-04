@@ -1,0 +1,67 @@
+name: Check hashes
+
+on:
+  schedule:
+    - cron: '0 7 * * *'
+
+jobs:
+  check-hashes:
+    name: Check for updated hashes
+    runs-on: ubuntu-latest
+    outputs:
+      updated-versions: ${{ steps.check-hashes.outputs.updated-versions }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Check for updated hashes
+        id: check-hashes
+        run: |
+          set -o pipefail
+          updated_versions=$(npm run check-hashes-ts | tee /dev/fd/2 | (grep -oP '(?<=\[\[).*(?=\]\])' || echo))
+          echo "updated-versions=$updated_versions" >>$GITHUB_OUTPUT
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: fasm_versions.json
+          path: ./fasm_versions.json
+          retention-days: 1
+
+  pull-request:
+    name: Test & create pull request
+    needs: check-hashes
+    if: needs.check-hashes.outputs.updated-versions != ''
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: fasm_versions.json
+
+      - name: Test install latest fasm 1 version
+        if: contains(needs.check-hashes.outputs.updated-versions, 'fasm1')
+        uses: stevenwdv/setup-fasm@v1
+        with:
+          edition: fasm1
+          custom-version-list: ./fasm_versions.json
+      - name: Test install latest fasm g version
+        if: contains(needs.check-hashes.outputs.updated-versions, 'fasmg')
+        uses: stevenwdv/setup-fasm@v1
+        with:
+          edition: fasmg
+          custom-version-list: ./fasm_versions.json
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          add-paths: fasm_versions.json
+          commit-message: Update hashes for ${{ needs.check-hashes.outputs.updated-versions }} in fasm_versions.json
+          author: Version checker bot <41898282+github-actions[bot]@users.noreply.github.com>
+          branch: fasm-version-updates
+          delete-branch: true
+          title: Update fasm_versions.json
+          body: Update hashes for ${{ needs.check-hashes.outputs.updated-versions }} in fasm_versions.json
+          labels: fasm-versions
