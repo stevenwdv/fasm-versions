@@ -1,11 +1,12 @@
 {
 	"name": "fasm-versions",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"author": "stevenwdv",
 	"license": "MIT",
 	"main": "./src/version-data.ts",
 	"scripts": {
-		"check-versions-ts": "yes | npx ts-node --transpileOnly ./src/check-new-versions.ts",
+		"check-versions-ts": "npx ts-node --transpileOnly ./src/check-new-versions.ts",
+		"check-hashes-ts": "npx ts-node --transpileOnly ./src/check-hashes.ts",
 		"lint": "tsc --noEmit && eslint .",
 		"prepare": "husky install ./.hooks"
 	},

@@ -8,12 +8,12 @@ Some releases do not have binaries online (for all OSs)
 Some releases that are not in WHATSNEW.TXT do have binaries online
  */
 
-export const getUrls: { [platform in FasmEditionStr]: (version: FasmVersion, platform: PlatformStr) => string[] } = {
+export const getUrls: { [edition in FasmEditionStr]: (version: FasmVersion, platform: PlatformStr) => URL[] } = {
 	fasm1(version, platform) {
 		const names = (version.alt ? [version.alt, version.name] : [version.name]).map(name => {
-			const versionNameDotless = name.replace(/\./g, '');
+			const versionNameDotless = name.replaceAll('.', '');
 			return {
-				windows: parseInt(versionNameDotless) < parseInt('1.54'.replace(/\./g, ''))
+				windows: parseInt(versionNameDotless) < parseInt('1.54'.replaceAll('.', ''))
 					  ? `fasmc${versionNameDotless}.zip`
 					  : `fasmw${versionNameDotless}.zip`,
 				linux: `fasm-${name}.tgz`,
@@ -27,19 +27,19 @@ export const getUrls: { [platform in FasmEditionStr]: (version: FasmVersion, pla
 			'http://comrade.ownz.com/fasm/',  // Even older releases
 		];
 
-		return sites.flatMap(site => names.map(name => site + name));
+		return sites.flatMap(site => names.map(name => site + name)).map(u => new URL(u));
 	},
 	fasmg(version) {
 		const sites = ['https://flatassembler.net/'];
 		const names = (version.alt ? [version.alt, version.name] : [version.name])
 			  .map(name => `fasmg.${name}.zip`);
-		return sites.flatMap(site => names.map(name => site + name));
+		return sites.flatMap(site => names.map(name => site + name)).map(u => new URL(u));
 	},
 	fasmarm(_version, platform) {
 		const sites = ['https://arm.flatassembler.net/'];
 		const names = ['FASMARM_full.ZIP'];
 		if (platform === 'windows') names.unshift('FASMARM_win32.ZIP');
-		return sites.flatMap(site => names.map(name => site + name));
+		return sites.flatMap(site => names.map(name => site + name)).map(u => new URL(u));
 	},
 };
 
