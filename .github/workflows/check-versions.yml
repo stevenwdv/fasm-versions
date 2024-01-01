@@ -23,7 +23,7 @@ jobs:
           added_versions=$(npm run check-versions-ts | tee /dev/fd/2 | (grep -oP '(?<=\[\[).*(?=\]\])' || echo))
           echo "added-versions=$added_versions" >>$GITHUB_OUTPUT
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: fasm_versions.json
           path: ./fasm_versions.json
