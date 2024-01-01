@@ -23,6 +23,6 @@
 		"@typescript-eslint/parser": "^6.2.1",
 		"eslint": "^8.46.0",
 		"husky": "^8.0.3",
-		"ts-node": "^10.9.1"
+		"ts-node": "^10.9.2"
 	}
 }
