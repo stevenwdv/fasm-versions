@@ -1130,6 +1130,14 @@
 		"fasmg": {
 			"versions": [
 				{
+					"name": "kaqg",
+					"hashes": {
+						"windows": "176084d8d45a369893185f0230cece6c52c28b20b66e45bfa741dac58de819569a6099e3fc8d5e42b97f3cc6f366aab39145cd94e93d7b80d1d2be992b614b5b",
+						"linux": "176084d8d45a369893185f0230cece6c52c28b20b66e45bfa741dac58de819569a6099e3fc8d5e42b97f3cc6f366aab39145cd94e93d7b80d1d2be992b614b5b",
+						"unix": "176084d8d45a369893185f0230cece6c52c28b20b66e45bfa741dac58de819569a6099e3fc8d5e42b97f3cc6f366aab39145cd94e93d7b80d1d2be992b614b5b"
+					}
+				},
+				{
 					"name": "k9zn",
 					"hashes": {
 						"windows": "f738723788520d716b132681e3410e0860cfbda6850089840f41b8a59cefbeee82fb8032d013f08cd36bc12cdaf4bfe3d38801ce11ffa6e8e21e07c1ed378485",
