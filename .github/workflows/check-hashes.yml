@@ -62,8 +62,8 @@ jobs:
           add-paths: fasm_versions.json
           commit-message: Update hashes for ${{ needs.check-hashes.outputs.updated-versions }} in fasm_versions.json
           author: Version checker bot <41898282+github-actions[bot]@users.noreply.github.com>
-          branch: fasm-version-updates
+          branch: fasm-hash-updates
           delete-branch: true
-          title: Update fasm_versions.json
+          title: Update hashes in fasm_versions.json
           body: Update hashes for ${{ needs.check-hashes.outputs.updated-versions }} in fasm_versions.json
           labels: fasm-versions
