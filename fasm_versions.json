@@ -1387,6 +1387,14 @@
 				}
 			]
 		},
+		"fasm2": {
+			"versions": [
+				{
+					"name": "latest",
+					"dynamic": true
+				}
+			]
+		},
 		"fasmarm": {
 			"versions": [
 				{

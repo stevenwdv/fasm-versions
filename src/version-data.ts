@@ -35,6 +35,11 @@ export const getUrls: { [edition in FasmEditionStr]: (version: FasmVersion, plat
 			  .map(name => `fasmg.${name}.zip`);
 		return sites.flatMap(site => names.map(name => site + name)).map(u => new URL(u));
 	},
+	fasm2() {
+		const sites = ['https://flatassembler.net/'];
+		const names = ['fasm2.zip'];
+		return sites.flatMap(site => names.map(name => site + name)).map(u => new URL(u));
+	},
 	fasmarm(_version, platform) {
 		const sites = ['https://arm.flatassembler.net/'];
 		const names = ['FASMARM_full.ZIP'];
