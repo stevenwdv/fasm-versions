@@ -3,6 +3,14 @@
 		"fasm1": {
 			"versions": [
 				{
+					"name": "1.73.33",
+					"hashes": {
+						"windows": "be677c68804b76dfaba1a67ccbf6919a80dbe1e726d2d362cc6270654b91ce6cadf09566d8753eabe2850774c2bd9602d89e55252a2af7f4191a9b2e3264227f",
+						"linux": "d3a5c343b74f473c6fc1e164e6d4abebae202345e85c967ecfcfa3c7747b76be7e6f00fec012acb1f4d84d2712f0e2e6c74659c030cab0a384731385464ed89d",
+						"unix": "2fc2adefa1685104e7686aa951adf57256886aee2bb700d9f4ce533d6834cfe0c13c36dc4005859b3791ddbd331c72ed72fd22dd6345544d74179ab511dc251c"
+					}
+				},
+				{
 					"name": "1.73.32",
 					"hashes": {
 						"windows": "3d5ed734797ba3551be3bc629c16d18c8e035d6fdad096c24821154a387e61602f3f2f5651e044a01f5a8cb1a5f9ba5180dc50ad038c7c3d173d83686863258a",
@@ -1129,6 +1137,14 @@
 		},
 		"fasmg": {
 			"versions": [
+				{
+					"name": "l04h",
+					"hashes": {
+						"windows": "b65e58ed55a7152ec75493a959166f7ccb5bb415c37fb5ef087e0ccb05d9cc78c80cb9d269430e4b2ae3d1ad6341b713f0c3a9b6abc45e75bd275368ccd99fef",
+						"linux": "b65e58ed55a7152ec75493a959166f7ccb5bb415c37fb5ef087e0ccb05d9cc78c80cb9d269430e4b2ae3d1ad6341b713f0c3a9b6abc45e75bd275368ccd99fef",
+						"unix": "b65e58ed55a7152ec75493a959166f7ccb5bb415c37fb5ef087e0ccb05d9cc78c80cb9d269430e4b2ae3d1ad6341b713f0c3a9b6abc45e75bd275368ccd99fef"
+					}
+				},
 				{
 					"name": "ktge",
 					"hashes": {
