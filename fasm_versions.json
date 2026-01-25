@@ -1146,6 +1146,14 @@
 		"fasmg": {
 			"versions": [
 				{
+					"name": "l2fx",
+					"hashes": {
+						"windows": "9a60fef0967b4592e6752cab2489f0e2898fe797c608691c450ba0ab19dd606b3601b7d79b481108f54e82e48438e8f0abab9fca86bbcbea702d7d69dd89ad93",
+						"linux": "9a60fef0967b4592e6752cab2489f0e2898fe797c608691c450ba0ab19dd606b3601b7d79b481108f54e82e48438e8f0abab9fca86bbcbea702d7d69dd89ad93",
+						"unix": "9a60fef0967b4592e6752cab2489f0e2898fe797c608691c450ba0ab19dd606b3601b7d79b481108f54e82e48438e8f0abab9fca86bbcbea702d7d69dd89ad93"
+					}
+				},
+				{
 					"name": "l04h",
 					"hashes": {
 						"windows": "b65e58ed55a7152ec75493a959166f7ccb5bb415c37fb5ef087e0ccb05d9cc78c80cb9d269430e4b2ae3d1ad6341b713f0c3a9b6abc45e75bd275368ccd99fef",
