@@ -16,8 +16,11 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 16
+      - name: Install dependencies
+        run: npm install
       - name: Check for new versions
         id: check-versions
+        #language=bash
         run: |
           set -o pipefail
           added_versions=$(npm run check-versions-ts | tee /dev/fd/2 | (grep -oP '(?<=\[\[).*(?=\]\])' || echo))

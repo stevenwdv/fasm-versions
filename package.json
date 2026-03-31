@@ -5,8 +5,8 @@
 	"license": "MIT",
 	"main": "./src/version-data.ts",
 	"scripts": {
-		"check-versions-ts": "npx ts-node --transpileOnly ./src/check-new-versions.ts",
-		"check-hashes-ts": "npx ts-node --transpileOnly ./src/check-hashes.ts",
+		"check-versions-ts": "ts-node --transpileOnly ./src/check-new-versions.ts",
+		"check-hashes-ts": "ts-node --transpileOnly ./src/check-hashes.ts",
 		"lint": "tsc --noEmit && eslint .",
 		"prepare": "husky install ./.hooks"
 	},

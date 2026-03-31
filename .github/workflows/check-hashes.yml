@@ -16,8 +16,11 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 16
+      - name: Install dependencies
+        run: npm install
       - name: Check for updated hashes
         id: check-hashes
+        #language=bash
         run: |
           set -o pipefail
           updated_versions=$(npm run check-hashes-ts | tee /dev/fd/2 | (grep -oP '(?<=\[\[).*(?=\]\])' || echo))
