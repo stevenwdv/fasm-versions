@@ -1,6 +1,6 @@
 {
 	"name": "fasm-versions",
-	"version": "1.1.0",
+	"version": "1.2.1",
 	"author": "stevenwdv",
 	"license": "MIT",
 	"main": "./src/version-data.ts",
