@@ -26,7 +26,10 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 16
+      - name: Install dependencies
+        run: npm install
       - name: Test if check-versions adds versions
+        #language=bash
         run: |
           set -o pipefail
           echo '{"editions":{"fasm1":{"versions":[]},"fasmg":{"versions":[]},"fasmarm":{"versions":[]}}}' >./fasm_versions.json
