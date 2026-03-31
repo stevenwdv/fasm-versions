@@ -23,13 +23,15 @@ export class HttpError extends Error {
 	}
 }
 
+const agent = new https.Agent({
+	// Try to prevent 'unsafe legacy renegotiation disabled' error because of unpatched flatassembler.net server
+	maxCachedSessions: 0,
+});
+
 export function httpsGet(url: URL): Promise<IncomingMessage> {
 	return new Promise((resolve, reject) =>
 		  // eslint-disable-next-line no-promise-executor-return
-		  void https.get(url, {
-			  // Try to prevent 'unsafe legacy renegotiation disabled' error because of unpatched flatassembler.net server
-			  secureOptions: 0x40000000, /*SSL_OP_NO_RENEGOTIATION*/
-		  }, res => {
+		  void https.get(url, {agent}, res => {
 			  if (res.statusCode !== 200)
 				  reject(new HttpError(url, res.statusCode));
 			  else resolve(res);
