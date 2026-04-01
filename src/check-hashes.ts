@@ -15,9 +15,9 @@ const maxTlsErrorRetries = 6;
 
 async function main() {
 	const updatedHashes: { edition: FasmEditionStr, version: string }[] = [];
-	let versionsChecked                                                 = 0;
 	for (const [edition, editionObj] of
-		  Object.entries(data.editions) as [FasmEditionStr, FasmEdition][])
+		  Object.entries(data.editions) as [FasmEditionStr, FasmEdition][]) {
+		let versionsChecked = 0;
 		for (const version of editionObj.versions) {
 			if (versionsChecked++ === maxVersionsToCheck) {
 				console.log('reached limit of versions to check');
@@ -26,9 +26,9 @@ async function main() {
 			if (!version.hashes) continue;
 			let officialDownloadAvailable = false;
 			for (const [platform, expectedHash] of
-				  Object.entries(version.hashes) as [PlatformStr, string][]) {
+				Object.entries(version.hashes) as [PlatformStr, string][]) {
 				for (const officialUrl of getUrls[edition](version, platform)
-					  .filter(url => url.origin === officialOrigin)) downloadUrl: {
+					.filter(url => url.origin === officialOrigin)) downloadUrl: {
 					let currentHash;
 					let retry = 0;
 					while (true) {
@@ -61,6 +61,7 @@ async function main() {
 				break;
 			}
 		}
+	}
 	if (updatedHashes.length) {
 		await fsp.writeFile(path.resolve(__dirname, '../fasm_versions.json'), JSON.stringify(data, undefined, '\t') + '\n');
 		console.info(`updated hashes for [[${
