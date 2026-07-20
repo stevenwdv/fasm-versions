@@ -1154,6 +1154,14 @@
 		"fasmg": {
 			"versions": [
 				{
+					"name": "l8vn",
+					"hashes": {
+						"windows": "ba6b7801d49a09b5eb87ad2de0ce11b468599a7d811962c3a14409075a1cc1769a730edbc1b91107e2aa2f6891e86c994758eeae9960e1d3bc1d7fa682e9d23e",
+						"linux": "ba6b7801d49a09b5eb87ad2de0ce11b468599a7d811962c3a14409075a1cc1769a730edbc1b91107e2aa2f6891e86c994758eeae9960e1d3bc1d7fa682e9d23e",
+						"unix": "ba6b7801d49a09b5eb87ad2de0ce11b468599a7d811962c3a14409075a1cc1769a730edbc1b91107e2aa2f6891e86c994758eeae9960e1d3bc1d7fa682e9d23e"
+					}
+				},
+				{
 					"name": "l8tv",
 					"hashes": {
 						"windows": "7db370f94c6cf927596f813933cc3154b50ce060238b09616ab0c104bb04df281176eece56562f3523e5d7294efd7ee726deb815541dbf3d130b551bc9725cdd",
