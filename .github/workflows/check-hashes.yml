@@ -12,7 +12,7 @@ jobs:
       updated-versions: ${{ steps.check-hashes.outputs.updated-versions }}
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: actions/setup-node@v6
       - name: Install dependencies
         run: npm install
@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: actions/download-artifact@v8
         with:
           name: fasm_versions.json
